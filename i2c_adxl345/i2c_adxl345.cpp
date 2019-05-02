@@ -90,7 +90,7 @@ int main() {
     int16_t rawaccel[3];
 
     for (int i = 0; i < 3; i++) {
-        if (i2c.writeByte(ADXL345_XOUT_L) != mraa:SUCCESS) { // 0x32
+        if (i2c.writeByte(ADXL345_XOUT_L) != mraa::SUCCESS) { // 0x32
             cerr << "Failed to write byte to register\n";
             return 0;
         }

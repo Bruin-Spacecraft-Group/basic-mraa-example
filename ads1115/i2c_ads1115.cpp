@@ -2,8 +2,10 @@
 #include "mraa.h"
 #include "mraa/i2c.hpp"
 
+using namespace std;
+
 int main() {
-    mraa::I2c i2c(0);
+   mraa::I2c i2c(0);
     uint8_t writeBuf[3];
     uint8_t readBuf[2];
 
@@ -13,7 +15,7 @@ int main() {
             return 0;
     }
 
-    writeBuf[0] = 1; // Write to config register
+    writeBuf[0] = 0x01; // Write to config register
     writeBuf[1] = 0xC3;
     writeBuf[2] = 0x03;
     if (i2c.write(writeBuf, 3) != mraa::SUCCESS) {
@@ -25,7 +27,7 @@ int main() {
     readBuf[1] = 0;
 
     while ((readBuf[0] & 0x80) == 0) {
-        i2c.read(buffer, 2); // Read the config register into readBuf
+        i2c.read(readBuf, 2); // Read the config register into readBuf
     }
 
     writeBuf[0] = 0;					// Set pointer register to 0 to read from the conversion register
