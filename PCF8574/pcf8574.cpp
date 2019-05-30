@@ -18,7 +18,7 @@ int main() {
      writeBuf[0] = 0xFF;
      writeBuf[1] = 0xD; // Set P0 to output, P1 to input
      if (i2c.write(writeBuf, 2) != mraa::SUCCESS) {
-         cerr << "Failed to write config register (24 bits)\n";
+         cerr << "Failed to set ports\n";
          return 0;
      }
 
@@ -27,14 +27,14 @@ int main() {
      writeBuf[0] = 0x0;
      writeBuf[1] = 0x1; // high output
      if (i2c.write(writeBuf, 2) != mraa::SUCCESS) {
-         cerr << "Failed to write to pointer register\n";
+         cerr << "Failed to write to port (high)\n";
      }
 
      sleep(1000000);
 
      writeBuf[1] = 0x0; // low output
      if (i2c.write(writeBuf, 2) != mraa::SUCCESS) {
-         cerr << "Failed to write to pointer register\n";
+         cerr << "Failed to write to port (low)\n";
      }
 
      cout << "Success" << endl;
