@@ -1,3 +1,5 @@
+// Working: Reads single ended from A0 channel
+
 #include <iostream>
 #include "mraa/i2c.hpp"
 

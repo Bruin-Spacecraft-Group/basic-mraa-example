@@ -1,3 +1,5 @@
+// Working read from ADXL345
+
 #include <iostream>
 #include "mraa.h"
 #include "mraa/i2c.hpp" // or "mraa/i2c.h"?

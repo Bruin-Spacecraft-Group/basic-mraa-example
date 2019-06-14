@@ -1,3 +1,5 @@
+// UNTESTED: read from I/O expander
+
 #include <iostream>
 #include "mraa/i2c.hpp"
 #include <unistd.h>
