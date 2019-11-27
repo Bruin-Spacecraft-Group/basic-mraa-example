@@ -1,4 +1,4 @@
-// Working: Reads single ended from A0 channel
+// Test: Attempting to Read single ended from A1 channel
 
 #include <iostream>
 #include "mraa/i2c.hpp"
@@ -18,7 +18,7 @@ int main() {
      }
  
      writeBuf[0] = 0x01; // Write to config register
-     writeBuf[1] = 0xC3;
+     writeBuf[1] = 0xD3;
      writeBuf[2] = 0x03;
      if (i2c.write(writeBuf, 3) != mraa::SUCCESS) {
          cerr << "Failed to write config register (24 bits)\n";
