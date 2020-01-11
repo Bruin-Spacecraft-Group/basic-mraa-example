@@ -5,8 +5,9 @@
 
 using namespace std;
 
-
-int main() {
+class ADS1115 : public Sensor
+{
+public:
      mraa::I2c i2c(0);
      uint8_t writeBuf[3];
      uint8_t readBuf[2];
@@ -18,7 +19,7 @@ int main() {
      }
  
      writeBuf[0] = 0x01; // Write to config register
-     writeBuf[1] = 0xD3;
+     writeBuf[1] = 0xC3;
      writeBuf[2] = 0x03;
      if (i2c.write(writeBuf, 3) != mraa::SUCCESS) {
          cerr << "Failed to write config register (24 bits)\n";
@@ -43,4 +44,7 @@ int main() {
      
      printf("A0 Voltage Reading %f (V) \n", (float)val*4.096/32767.0);	// Print the result to terminal, first convert from binary value to mV
  
+private:
+     mraa::I2c m_i2c;
+     float m_A0 = (float)val*4.096/32767.0;
 }
